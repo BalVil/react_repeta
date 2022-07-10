@@ -5,15 +5,43 @@ import shortid from 'shortid';
 import Container from './components/Container';
 import TodoList from './components/TodoList';
 import TodoEditor from './components/TodoEditor';
-import Filter from './components/Filter';
+import TodoFilter from './components/TodoFilter';
 // import Form from './components/Form';
-import initialTodos from './todos.json';
+// import initialTodos from './todos.json';
+import Modal from './components/Modal';
+// import Tabs from './components/Tabs';
+// import tabs from './tabs.json';
+import IconButton from './components/IconButton';
+import { ReactComponent as AddIcon } from './icons/add.svg';
 
 class App extends Component {
   state = {
     todos: [],
     filter: '',
+    showModal: false,
   };
+
+  componentDidMount() {
+    const todos = localStorage.getItem('todos');
+    const parsedTodos = JSON.parse(todos);
+
+    if (parsedTodos) {
+      this.setState({ todos: parsedTodos });
+    }
+  }
+  componentDidUpdate(prevProps, prevState) {
+    const nextTodos = this.state.todos;
+    const prevTodos = prevState.todos;
+
+    if (nextTodos !== prevTodos) {
+      console.log('updated');
+      localStorage.setItem('todos', JSON.stringify(nextTodos));
+    }
+    // більше перевірок коду, але менше зв'язує (гнучкіше у використанні)
+    if (nextTodos.length > prevTodos.length && prevTodos.length !== 0) {
+      this.toggleModal();
+    }
+  }
 
   addTodo = text => {
     const todo = {
@@ -25,6 +53,9 @@ class App extends Component {
     this.setState(({ todos }) => ({
       todos: [todo, ...todos],
     }));
+
+    // менше коду, але жорсткий зв'язок закриття модалки з методом додаванням todo
+    // this.toggleModal();
   };
 
   deleteTodo = todoId => {
@@ -76,39 +107,37 @@ class App extends Component {
     );
   };
 
-  componentDidMount() {
-    const todos = localStorage.getItem('todos');
-    const parsedTodos = JSON.parse(todos);
-
-    if (parsedTodos) {
-      this.setState({ todos: parsedTodos });
-    }
-  }
-  componentDidUpdate(prevProps, prevState) {
-    if (this.state.todos !== prevState.todos) {
-      console.log('updated');
-      localStorage.setItem('todos', JSON.stringify(this.state.todos));
-    }
-  }
+  toggleModal = () => {
+    this.setState(({ showModal }) => ({
+      showModal: !showModal,
+    }));
+  };
 
   render() {
-    const { todos, filter } = this.state;
+    const { todos, filter, showModal } = this.state;
     const totalTodoCount = todos.length;
     const completedTodoCount = this.calculateCompletedTodos();
     const visibleTodos = this.getVisibleTodos();
 
     return (
       <Container>
-        {/* TODO: вынести в отдельный компонент */}
+        {/* <Tabs items={tabs} /> */}
 
+        <IconButton onClick={this.toggleModal} aria-label="add todo">
+          <AddIcon width="40" height="40" fill="#fff" />
+        </IconButton>
+
+        {showModal && (
+          <Modal onClose={this.toggleModal}>
+            <TodoEditor onSubmit={this.addTodo} />
+          </Modal>
+        )}
         <div>
-          <p>Всего заметок: {totalTodoCount}</p>
-          <p>Выполнено: {completedTodoCount}</p>
+          <p>Total notes: {totalTodoCount}</p>
+          <p>Completed: {completedTodoCount}</p>
         </div>
 
-        <TodoEditor onSubmit={this.addTodo} />
-
-        <Filter value={filter} onChange={this.changeFilter} />
+        <TodoFilter value={filter} onChange={this.changeFilter} />
 
         <TodoList
           todos={visibleTodos}
