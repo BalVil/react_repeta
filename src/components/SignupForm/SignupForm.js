@@ -1,11 +1,10 @@
-import { useState } from 'react';
-
-// import useLocalStorage from '../../hooks/useLocalStorage';
+import useLocalStorage from '../../hooks/useLocalStorage';
 import styles from './SignupForm.module.css';
 
-export default function SignupForm(params) {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+export default function SignupForm() {
+  const [email, setEmail] = useLocalStorage('email', '');
+
+  const [password, setPassword] = useLocalStorage('password', '');
 
   const handleChange = e => {
     const { name, value } = e.target;
@@ -21,6 +20,7 @@ export default function SignupForm(params) {
         return;
     }
   };
+
   return (
     <form className={styles.form} autoComplete="off">
       <label className={styles.label}>

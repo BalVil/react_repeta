@@ -1,9 +1,9 @@
 // import { Route, Routes } from 'react-router-dom';
-// import AppBar from './components/AppBar/AppBar';
+import AppBar from './components/AppBar/AppBar';
 // import SignupForm from './components/SignupForm/SignupForm';
 // import ColorPicker from './components/ColorPicker/ColorPicker';
-import Counter from './components/Counter/Counter';
-// import Clock from './components/Clock/Clock';
+// import Counter from './components/Counter/Counter';
+import Clock from './components/Clock/Clock';
 // import PokemonView from './views/PokemonView';
 
 const colorPickerOptions = [
@@ -28,9 +28,10 @@ export default function App() {
     <div style={containerStyles}>
       {/* <SignupForm /> */}
       {/* <ColorPicker options={colorPickerOptions} /> */}
-      <Counter />
+      {/* <Counter /> */}
+      {/* <Clock /> */}
 
-      {/* <AppBar /> */}
+      <AppBar />
 
       {/* <Switch> */}
       {/* <Routes>
