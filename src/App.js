@@ -1,10 +1,10 @@
-import { Switch, Route } from 'react-router-dom';
-import AppBar from './components/AppBar/AppBar';
-import SignupForm from './components/SignupForm/SignupForm';
-import ColorPicker from './components/ColorPicker/ColorPicker';
+// import { Route, Routes } from 'react-router-dom';
+// import AppBar from './components/AppBar/AppBar';
+// import SignupForm from './components/SignupForm/SignupForm';
+// import ColorPicker from './components/ColorPicker/ColorPicker';
 import Counter from './components/Counter/Counter';
-import Clock from './components/Clock/Clock';
-import PokemonView from './views/PokemonView';
+// import Clock from './components/Clock/Clock';
+// import PokemonView from './views/PokemonView';
 
 const colorPickerOptions = [
   { label: 'red', color: '#F44336' },
@@ -26,14 +26,19 @@ const containerStyles = {
 export default function App() {
   return (
     <div style={containerStyles}>
-      <AppBar />
+      {/* <SignupForm /> */}
+      {/* <ColorPicker options={colorPickerOptions} /> */}
+      <Counter />
 
-      <Switch>
+      {/* <AppBar /> */}
+
+      {/* <Switch> */}
+      {/* <Routes>
         <Route path="/signup">
           <SignupForm />
-        </Route>
+        </Route> */}
 
-        <Route path="/colorpicker">
+      {/* <Route path="/colorpicker">
           <ColorPicker options={colorPickerOptions} />
         </Route>
 
@@ -47,8 +52,9 @@ export default function App() {
 
         <Route path="/pokemon">
           <PokemonView />
-        </Route>
-      </Switch>
+        </Route> */}
+      {/* </Switch> */}
+      {/* </Routes> */}
     </div>
   );
 }
