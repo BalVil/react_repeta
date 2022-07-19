@@ -18,7 +18,7 @@ export default function PokemonInfo({ pokemonName }) {
 
   useEffect(() => {
     if (!pokemonName) {
-      // Первый рендер, pokemonName это пустая строка, не делаем fetch
+      // Перший рендер, pokemonName - порожній рядок, не робимо fetch
       return;
     }
 
@@ -27,7 +27,7 @@ export default function PokemonInfo({ pokemonName }) {
     pokemonAPI
       .fetchPokemon(pokemonName)
       .then(pokemon => {
-        // Порядок важен!!!! Сначала кладем данные, потом статус.
+        // Послідовність важлива
         setPokemon(pokemon);
         setStatus(Status.RESOLVED);
       })

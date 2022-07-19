@@ -5,12 +5,14 @@ function countReducer(state, action) {
   switch (action.type) {
     case 'increment':
       return { ...state, count: state.count + action.payload };
-
+    // якщо примітив:
+    // return state + action.payload;
     case 'decrement':
       return { ...state, count: state.count - action.payload };
-
+    // якщо примітив:
+    // return state - action.payload;
     default:
-      throw new Error(`Unsuported action type ${action.type}`);
+      throw new Error(`Unsupported action type ${action.type}`);
   }
 }
 
@@ -25,17 +27,21 @@ export default function Counter() {
       <button
         className={styles.btn}
         type="button"
-        onClick={() => dispatch({ type: 'increment', payload: 1 })}
+        onClick={() => {
+          dispatch({ type: 'increment', payload: 1 });
+        }}
       >
-        Увеличить
+        Increase
       </button>
 
       <button
         className={styles.btn}
         type="button"
-        onClick={() => dispatch({ type: 'decrement', payload: 1 })}
+        onClick={() => {
+          dispatch({ type: 'decrement', payload: 1 });
+        }}
       >
-        Уменьшить
+        Decrease
       </button>
     </div>
   );

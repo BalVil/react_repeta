@@ -6,32 +6,28 @@ const Navigation = () => (
   <nav>
     <NavLink
       to="/skip-first-render"
-      className={styles.link}
-      activeClassName={styles.activeLink}
+      className={({ isActive }) => (isActive ? styles.activeLink : styles.link)}
     >
       Пропуск первого рендера
     </NavLink>
 
     <NavLink
       to="/pokemon"
-      className={styles.link}
-      activeClassName={styles.activeLink}
+      className={({ isActive }) => (isActive ? styles.activeLink : styles.link)}
     >
       Покемоны с хуками
     </NavLink>
 
     <NavLink
       to="/counter"
-      className={styles.link}
-      activeClassName={styles.activeLink}
+      className={({ isActive }) => (isActive ? styles.activeLink : styles.link)}
     >
       useReducer
     </NavLink>
 
     <NavLink
       to="/notes"
-      className={styles.link}
-      activeClassName={styles.activeLink}
+      className={({ isActive }) => (isActive ? styles.activeLink : styles.link)}
     >
       useMemo
     </NavLink>

@@ -14,6 +14,16 @@ export default function SkipEffectOnFirstRender() {
   const [count, setCount] = useState(0);
   const isFirstRender = useRef(true);
 
+  // приклад з fetch після монтування
+  // const [query, setQuery] = useState(0);
+  // useEffect(() => {
+  //   if (query === '') {
+  //     return;
+  //   }
+  //   // fetch().then()
+  // }, [query]);
+
+  // не для fetch
   useEffect(() => {
     if (isFirstRender.current) {
       isFirstRender.current = false;

@@ -1,4 +1,4 @@
-import { Switch, Route } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import AppBar from './components/AppBar/AppBar';
 import SkipEffectOnFirstRender from './components/SkipEffectOnFirstRender';
 import Counter from './components/Counter/Counter';
@@ -17,24 +17,28 @@ export default function App() {
   return (
     <div style={containerStyles}>
       <AppBar />
+      {/* <SkipEffectOnFirstRender /> */}
+      {/* <PokemonView /> */}
+      {/* <Counter /> */}
+      <Friends />
 
-      <Switch>
-        <Route path="/skip-first-render">
-          <SkipEffectOnFirstRender />
-        </Route>
+      {/* <Routes> */}
+      {/* <Route path="/skip-first-render">
+        <SkipEffectOnFirstRender />
+      </Route> */}
 
-        <Route path="/pokemon">
-          <PokemonView />
-        </Route>
+      {/* <Route path="/pokemon">
+        <PokemonView />
+      </Route>
 
-        <Route path="/counter">
-          <Counter />
-        </Route>
+      <Route path="/counter">
+        <Counter />
+      </Route>
 
-        <Route path="/notes">
-          <Friends />
-        </Route>
-      </Switch>
+      <Route path="/notes">
+        <Friends />
+      </Route> */}
+      {/* </Routes> */}
     </div>
   );
 }

@@ -6,6 +6,10 @@ import PokemonInfo from '../components/Pokemon/Info.js';
 export default function PokemonView() {
   const [pokemonName, setPokemonName] = useState('');
 
+  // handleFormSubmit = pokemonName => {
+  //   this.setState({ pokemonName });
+  // };
+
   return (
     <>
       <PokemonForm onSubmit={setPokemonName} />

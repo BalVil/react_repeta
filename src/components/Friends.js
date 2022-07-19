@@ -108,14 +108,15 @@ export default function Friends() {
   const [friends] = useState(initalFriends);
   const [filter, setFilter] = useState('');
 
-  // const visibleFriends = useMemo(() => {
-  //   console.log('Фильтруем друзей ' + Date.now());
-  //   return friends.filter(friend => friend.toLowerCase().includes(filter));
-  // }, [filter, friends]);
+  const visibleFriends = useMemo(() => {
+    console.log('Фильтруем друзей ' + Date.now());
+    return friends.filter(friend => friend.toLowerCase().includes(filter));
+  }, [filter, friends]);
 
-  const visibleFriends = friends.filter(friend =>
-    friend.toLowerCase().includes(filter),
-  );
+  // якщо маленька колекція не більше 100 елементів не потрібен useMemo
+  // const visibleFriends = friends.filter(friend =>
+  //   friend.toLowerCase().includes(filter)
+  // );
 
   return (
     <div>
