@@ -25,6 +25,13 @@ const Navigation = () => (
     >
       Books
     </NavLink>
+    <NavLink
+      to="/table"
+      className={({ isActive }) => (isActive ? styles.activeLink : styles.link)}
+      end
+    >
+      Таблица
+    </NavLink>
   </nav>
 );
 
