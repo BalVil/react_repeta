@@ -13,18 +13,15 @@ export default function BooksView() {
   return (
     <>
       <PageHeading text="Книги" />
+      {books && (
+        <ul>
+          {books.map(book => (
+            <li key={book.id}>
+              <Link to={`${book.id}`}>{book.title}</Link>
+            </li>
+          ))}
+        </ul>
+      )}
     </>
   );
 }
-
-//  {
-//    books && (
-//      <ul>
-//        {books.map(book => (
-//          <li key={book.id}>
-//            <Link to={`${book.id}`}>{book.title}</Link>
-//          </li>
-//        ))}
-//      </ul>
-//    );
-//  }

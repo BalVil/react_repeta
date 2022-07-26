@@ -14,22 +14,13 @@ export default function App() {
 
       <Routes>
         <Route path="/" element={<HomeView />} />
-        <Route path="/authors" element={<AuthorsView />} />
+        <Route path="/authors/*" element={<AuthorsView />} />
         <Route path="/books" element={<BooksView />} />
+        <Route path="/books/:bookId" element={<BookDetailsView />} />
         <Route path="*" element={<NotFoundView />} />
       </Routes>
     </Container>
   );
 }
 
-//  <Routes>
-//    <Route path="/" element={<HomeView />} />
-
 //    <Route path="/authors/*" element={<AuthorsView />} />
-
-//    <Route path="/books" element={<BooksView />} />
-
-//    <Route path="/books/:bookId" element={<BookDetailsView />} />
-
-//    <Route path="*" element={<NotFoundView />} />
-//  </Routes>;

@@ -29,27 +29,3 @@ const Navigation = () => (
 );
 
 export default Navigation;
-
-// {
-//   /* <nav>
-//   <NavLink to="/" className={styles.link} activeclassname={styles.activeLink}>
-//     Главная
-//   </NavLink>
-
-//   <NavLink
-//     to="/authors"
-//     className={styles.link}
-//     activeclassname={styles.activeLink}
-//   >
-//     Авторы
-//   </NavLink>
-
-//   <NavLink
-//     to="/books"
-//     className={styles.link}
-//     activeclassname={styles.activeLink}
-//   >
-//     Книги
-//   </NavLink>
-// </nav>; */
-// }
