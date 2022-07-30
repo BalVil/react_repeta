@@ -1,11 +1,13 @@
 import { Routes, Route } from 'react-router-dom';
 import { Layout } from 'components/Layout/Layout';
-import { HomeView } from 'views/HomeView';
-import { AuthorsView } from 'views/AuthorsView';
-import { AuthorSubView } from 'views/AuthorSubView';
-import { BooksView } from 'views/BooksView';
-import { BookDetailsView } from 'views/BookDetailsView';
-import { NotFoundView } from 'views/NotFoundView';
+import { createAsyncPage } from 'helpers';
+
+const HomeView = createAsyncPage('HomeView');
+const AuthorsView = createAsyncPage('AuthorsView');
+const AuthorSubView = createAsyncPage('AuthorSubView');
+const BooksView = createAsyncPage('BooksView');
+const BookDetailsView = createAsyncPage('BookDetailsView');
+const NotFoundView = createAsyncPage('NotFoundView');
 
 export const App = () => {
   return (
@@ -16,7 +18,7 @@ export const App = () => {
           <Route path=":authorId" element={<AuthorSubView />} />
         </Route>
         <Route path="books" element={<BooksView />} />
-        <Route path="books/:bookId" element={<BookDetailsView />} />
+        <Route path="books/:slug" element={<BookDetailsView />} />
         <Route path="*" element={<NotFoundView />} />
       </Route>
     </Routes>
